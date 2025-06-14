@@ -1,0 +1,34 @@
+# 🏁 Burnout Datathon: MotoGP Lap Time Prediction
+
+## 🚀 What’s This About?
+This repo is where I tackled the **Burnout Datathon**—a MotoGP lap time prediction challenge. The goal? Build a machine learning model that accurately predicts lap times based on rider stats, track conditions, and tire choices.
+
+After rounds of fine-tuning, I landed on a **LightGBM model** that pulled off a **validation RMSE of 10.0354** 🎯
+
+## 📊 The Plan
+### 🔍 **Feature Engineering**
+To give the model more to work with, I engineered a few key features:
+- **`podium_rate`** → How often a rider finishes on the podium (`podiums / starts`)
+- **`win_rate`** → Race wins per start (`wins / starts`)
+- **`finish_rate`** → Races finished cleanly (`finishes / starts`)
+- **`lap_complexity`** → Tracks with tighter corners vs. speed (`Corners_per_Lap / Avg_Speed_kmh`)
+
+### 🏎️ **The Model Choice**
+Went with **LightGBM**, tuned for speed and accuracy:
+- **1000 estimators** (with early stopping at 50 rounds)
+- **Learning rate:** `0.05`
+- **Num leaves:** `31`
+- **Eval metric:** RMSE  
+
+## 📈 How’d It Do?
+- ✅ **Validation RMSE:** `10.0354`
+- ✅ **Leaderboard Submission:** `solution3.csv`
+- ✅ **File checks:** Unique IDs intact, no missing values  
+
+## 💾 What’s Inside?
+```bash
+├── notebooks/           # All my EDA & modeling experiments
+├── data/                # Processed datasets (not included)
+├── solution3.csv        # Final predictions file
+├── burnout_motogp.ipynb # Main notebook
+└── README.md            # This file!
